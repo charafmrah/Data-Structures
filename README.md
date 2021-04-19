@@ -3,4 +3,4 @@
 
 These are some of the popular data structures implemented using Java. 
 
-These are good for beginners to learn how to implement.
+This is a good resource for beginners to see how the code of these data structures is implemented at a basic level.
