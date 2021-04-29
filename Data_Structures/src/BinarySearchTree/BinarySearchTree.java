@@ -2,7 +2,7 @@ package BinarySearchTree;
 
 import java.util.Stack;
 
-// Code written by Prof Ozge Yucel 
+// Code by Prof Ozge Yucel 
 
 public class BinarySearchTree {
 
@@ -40,6 +40,7 @@ public class BinarySearchTree {
 			// Locate the parent node
 			TreeNode parent = null;
 			TreeNode current = root;
+			
 			while (current != null)
 				if (e < current.getElement()) {
 					parent = current;
@@ -49,6 +50,7 @@ public class BinarySearchTree {
 					current = current.getRight();
 				} else
 					return false; // Duplicate node not inserted
+			
 			// Create the new node and attach it to the parent node
 			if (e < parent.getElement())
 				parent.setLeft(createNewNode(e));
@@ -84,8 +86,9 @@ public class BinarySearchTree {
 	}
 
 	/**
-	 * Delete an element from the binary tree. Return true if the element is deleted
-	 * successfully Return false if the element is not in the tree
+	 * Delete an element from the binary tree. 
+	 * Return true if the element is deleted successfully. 
+	 * Return false if the element is not in the tree.
 	 */
 	public boolean delete(int e) {
 		// Locate the node to be deleted and also locate its parent node
@@ -101,6 +104,7 @@ public class BinarySearchTree {
 			} else
 				break; // Element is in the tree pointed at by current
 		}
+		
 		if (current == null)
 			return false; // Element is not in the tree
 
@@ -115,9 +119,11 @@ public class BinarySearchTree {
 				else
 					parent.setRight(current.getRight());
 			}
-		} else {// Case 2: The current node has a left child
-				// Locate the rightmost node in the left subtree of
-				// the current node and also its parent
+		}
+		// Case 2: The current node has a left child
+		else {
+			// Locate the rightmost node in the left subtree of
+			// the current node and also its parent
 			TreeNode parentOfRightMost = current;
 			TreeNode rightMost = current.getLeft();
 			while (rightMost.getRight() != null) {
@@ -133,7 +139,7 @@ public class BinarySearchTree {
 				parentOfRightMost.setLeft(rightMost.getLeft());
 		}
 		size--;
-		return true; // Element inserted
+		return true; // Element deleted
 	}
 
 	public boolean search(int e) {
