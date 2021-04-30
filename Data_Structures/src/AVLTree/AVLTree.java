@@ -31,9 +31,9 @@ public class AVLTree {
     public Node insert(Node node, int key) {
         if (node == null) {
             return new Node(key);
-        } else if (node.key > key) {
+        } else if (node.data > key) {
             node.left = insert(node.left, key);
-        } else if (node.key < key) {
+        } else if (node.data < key) {
             node.right = insert(node.right, key);
         } else {
             throw new RuntimeException("duplicate Key!");
@@ -89,18 +89,17 @@ public class AVLTree {
     public Node delete(Node node, int key) {
         if (node == null) {
             return node;
-        } else if (node.key > key) {
+        } else if (node.data > key) {
             node.left = delete(node.left, key);
-        } else if (node.key < key) {
+        } else if (node.data < key) {
             node.right = delete(node.right, key);
         } else {
             if (node.left == null || node.right == null) {
                 node = (node.left == null) ? node.right : node.left;
             } else {
-                Node mostLeft = node;
-                mostLeft = mostLeft.mostLeftChild(node.right);
-                node.key = mostLeft.key;
-                node.right = delete(node.right, node.key);
+                Node mostLeft = mostLeftChild(node.right);
+                node.data = mostLeft.data;
+                node.right = delete(node.right, node.data);
             }
         }
         if (node != null) {
@@ -110,23 +109,23 @@ public class AVLTree {
         return node;
     }
     
-//    private Node mostLeftChild(Node current) {
-//    	Node parentOfRightMost = current;
-//		Node leftMost = current.getLeft();
-//		while (leftMost.getRight() != null) {
-//			parentOfRightMost = leftMost;
-//			leftMost = leftMost.getRight(); // Keep going to the right
-//		}
-//		return leftMost;
-//	}
+    public Node mostLeftChild(Node current) {
+    	Node parentOfRightMost = current;
+		Node leftMost = current.getLeft();
+		while (leftMost.getRight() != null) {
+			parentOfRightMost = leftMost;
+			leftMost = leftMost.getRight(); // Keep going to the right
+		}
+		return leftMost;
+	}
 
 	public String search(int key) {
         Node current = root;
         while (current != null) {
-            if (current.key == key) {
+            if (current.data == key) {
                 break;
             }
-            current = current.key < key ? current.right : current.left;
+            current = current.data < key ? current.right : current.left;
         }
         return "Found";
     }

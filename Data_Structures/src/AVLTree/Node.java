@@ -1,36 +1,25 @@
 package AVLTree;
 
 public class Node {
-    int key;
+    int data;
     int height;
-    Node left;
-    Node right;
+    Node left, right, parent;
 
     
    public Node(int key) {
-	   this.key = key;
-	   this.height = 0;
+	   this.data = key;
+	   this.height = 1;
 	   this.left = null;
 	   this.right = null;
    }
 
-	 public Node mostLeftChild(Node current) {
-		Node parentOfRightMost = current;
-		Node leftMost = current.getLeft();
-		while (leftMost.getRight() != null) {
-			parentOfRightMost = leftMost;
-			leftMost = leftMost.getRight(); // Keep going to the right
-		}
-		return leftMost;
-	}
-
 	public int getKey() {
-		return key;
+		return data;
 	}
 	
 	
 	public void setKey(int key) {
-		this.key = key;
+		this.data = key;
 	}
 	
 	
