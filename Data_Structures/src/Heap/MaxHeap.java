@@ -36,10 +36,10 @@ public class MaxHeap < T extends Comparable <? super T>> {
 		T root = null;
 		
 		if(!isEmpty()) {
-			root = heap[1]; //return value 
-			heap[1] = heap[lastIndex]; //create a semiheap
-			lastIndex--; //decrease the size
-			reheap(1); //transform to a heap
+			root = heap[1]; // return value 
+			heap[1] = heap[lastIndex]; // create a semiheap
+			lastIndex--; //	decrease the size
+			reheap(1); // transform to a heap
 		}
 		return root;
 	}

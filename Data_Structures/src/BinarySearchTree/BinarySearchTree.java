@@ -1,5 +1,6 @@
 package BinarySearchTree;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 // Code by Prof Ozge Yucel 
@@ -154,5 +155,36 @@ public class BinarySearchTree {
 				return true; // Element is found
 		}
 		return false;
+	}
+	
+	public int theShowMustGoOn(TreeNode root) {
+		int count = 0;
+		TreeNode current = root;
+		
+		if (current == null) {
+			return 0;
+		}
+		// Travers the tree using in order iteratively
+		Stack stack = new Stack<>();
+		while(!stack.isEmpty() || current != null) {
+			if(current!= null) {
+				
+				stack.push(current);
+				current = current.getLeft();
+			} else {
+				
+				TreeNode node = (TreeNode) stack.pop();
+				current = node.getRight();
+			}
+			
+			
+			
+		}
+		
+		// Return how many are even
+		return count;
+		
+		
+		// The code should work but there's a bug that I need to fix but I didn't yet
 	}
 }
